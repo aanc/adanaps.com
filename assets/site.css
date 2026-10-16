@@ -1,0 +1,333 @@
+/* Adanaps: the colours, type and slanted plates of OVERPOWER, the studio's first game. */
+
+@font-face {
+	font-family: "Barlow Condensed";
+	src: url("fonts/BarlowCondensed-BlackItalic.woff2") format("woff2");
+	font-weight: 900;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Barlow Semi Condensed";
+	src: url("fonts/BarlowSemiCondensed-SemiBold.woff2") format("woff2");
+	font-weight: 600;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Barlow Semi Condensed";
+	src: url("fonts/BarlowSemiCondensed-Bold.woff2") format("woff2");
+	font-weight: 700;
+	font-display: swap;
+}
+
+:root {
+	color-scheme: dark;
+	--ink: #140c2b;
+	--night: #2a1b5e;
+	--night-shade: #1d1245;
+	--night-light: #4a33a0;
+	--dots: #3b2884;
+	--text: #fff8ea;
+	--mist: #b9ade8;
+	--dim: #8a7cc4;
+	--cyan: #2bd8ff;
+	--amber: #ffc21f;
+	--amber-shade: #e07800;
+	--magenta: #ff4fbe;
+	--display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif-condensed, Impact, sans-serif;
+	--body: "Barlow Semi Condensed", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--gutter: clamp(16px, 5vw, 40px);
+	--slant: 4%;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--ink); }
+
+body {
+	margin: 0;
+	background:
+		radial-gradient(circle at 1px 1px, var(--dots) 1.2px, transparent 1.6px) 0 0 / 14px 14px,
+		linear-gradient(180deg, var(--night-shade), var(--ink) 70%);
+	background-attachment: fixed;
+	color: var(--text);
+	font: 600 1.075rem/1.6 var(--body);
+	-webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--cyan); text-underline-offset: 0.18em; }
+a:hover { color: var(--text); }
+img { max-width: 100%; height: auto; display: block; }
+
+.wrap {
+	max-width: 1080px;
+	margin: 0 auto;
+	padding-inline: var(--gutter);
+}
+
+/* --- Header and footer --- */
+
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding-block: 20px;
+}
+.wordmark {
+	font: italic 900 1.6rem/1 var(--display);
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--text);
+	text-decoration: none;
+	text-shadow: 3px 3px 0 var(--ink);
+}
+.wordmark span { color: var(--amber); }
+.lang {
+	display: flex;
+	gap: 4px;
+}
+.lang button {
+	font: 700 0.85rem/1 var(--body);
+	letter-spacing: 0.08em;
+	padding: 8px 12px;
+	border: 2px solid var(--night-light);
+	background: var(--night-shade);
+	color: var(--mist);
+	cursor: pointer;
+	clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+}
+.lang button[aria-pressed="true"] {
+	background: var(--cyan);
+	border-color: var(--cyan);
+	color: var(--ink);
+}
+
+.bottom {
+	margin-top: 96px;
+	padding-block: 32px 48px;
+	/* The rule over the footer, as wide as the text under it. */
+	background: linear-gradient(var(--night-light), var(--night-light)) top center / calc(100% - 2 * var(--gutter)) 3px no-repeat;
+	color: var(--dim);
+	font-size: 0.95rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 32px;
+	justify-content: space-between;
+}
+.bottom a { color: var(--mist); }
+
+/* Both languages are in each page; the one not chosen is hidden. */
+html:not(.fr) .l-fr, html.fr .l-en { display: none !important; }
+
+/* --- Type --- */
+
+h1, h2, h3, .display {
+	font-family: var(--display);
+	font-style: italic;
+	font-weight: 900;
+	text-transform: uppercase;
+	line-height: 0.95;
+	letter-spacing: 0.01em;
+	text-wrap: balance;
+	margin: 0;
+}
+h1 { font-size: clamp(3rem, 12vw, 6.5rem); }
+h2 { font-size: clamp(2rem, 6vw, 3rem); }
+h3 { font-size: 1.6rem; }
+
+/* The logo's treatment: paper letters over a gold copy, outlined in ink. */
+.logo {
+	color: var(--text);
+	text-shadow:
+		0.045em 0.045em 0 var(--amber),
+		0.075em 0.075em 0 var(--ink);
+	-webkit-text-stroke: 0.02em var(--ink);
+	paint-order: stroke fill;
+}
+
+.kicker {
+	display: inline-block;
+	font: 700 0.85rem/1 var(--body);
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--amber);
+	background: var(--ink);
+	padding: 8px 18px;
+	clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+}
+
+.lede {
+	font-size: clamp(1.15rem, 2.6vw, 1.35rem);
+	color: var(--mist);
+	max-width: 38em;
+	margin: 0;
+}
+
+p { max-width: 40em; }
+
+/* The slash under a heading. */
+.slash {
+	width: 160px;
+	height: 8px;
+	margin-block: 16px 24px;
+	background: var(--cyan);
+	box-shadow: 4px 4px 0 var(--ink);
+	transform: skewX(-24deg);
+}
+
+/* --- Plates --- */
+
+.plate {
+	position: relative;
+	/* Flat fill, with the shade tone on the lower part, as the game draws its plates. */
+	background: linear-gradient(180deg, var(--night) 72%, var(--night-shade) 72%);
+	padding: clamp(20px, 4vw, 36px);
+	border-left: 6px solid var(--cyan);
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%);
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	font: italic 900 1.5rem/1 var(--display);
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--ink);
+	background: linear-gradient(180deg, var(--cyan) 62%, #1597d8 62%);
+	padding: 14px 32px 12px;
+	clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+}
+.button:hover { color: var(--ink); filter: brightness(1.08); }
+.button.soon {
+	background: linear-gradient(180deg, var(--night-light) 62%, var(--night) 62%);
+	color: var(--text);
+	cursor: default;
+}
+
+section { margin-top: clamp(64px, 10vw, 112px); }
+
+/* --- Studio page --- */
+
+.hero { padding-block: clamp(48px, 10vw, 120px) 0; }
+.hero h1 { margin-top: 16px; }
+
+.game-card {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: clamp(20px, 4vw, 40px);
+	align-items: center;
+	text-decoration: none;
+	color: inherit;
+}
+.game-card:hover h3 { color: var(--amber); }
+.game-card img {
+	width: clamp(96px, 20vw, 160px);
+	border-radius: 22%;
+	box-shadow: 6px 6px 0 var(--ink);
+}
+.game-card > div { min-width: 0; }
+.game-card p { margin: 8px 0 0; color: var(--mist); }
+.game-card .tag { color: var(--amber); font: 700 0.85rem/1 var(--body); letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* --- Game page --- */
+
+.game-hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 32px;
+	padding-top: clamp(32px, 6vw, 72px);
+}
+.game-hero .icon {
+	width: clamp(96px, 18vw, 140px);
+	border-radius: 22%;
+	box-shadow: 6px 6px 0 var(--ink);
+}
+.game-hero .actions { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+.game-hero .note { color: var(--dim); font-size: 0.95rem; }
+
+.shots {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: min(62vw, 260px);
+	gap: 16px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	padding: 4px 4px 20px;
+	margin-inline: -4px;
+}
+.shots img {
+	scroll-snap-align: start;
+	aspect-ratio: 9 / 16;
+	object-fit: cover;
+	width: 100%;
+	border: 3px solid var(--ink);
+	box-shadow: 6px 6px 0 var(--ink);
+}
+
+.features {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+	gap: 20px;
+	margin-top: 32px;
+}
+.features .plate h3 { color: var(--amber); margin-bottom: 10px; }
+.features .plate p { margin: 0; color: var(--mist); }
+
+.ships {
+	list-style: none;
+	padding: 0;
+	margin: 32px 0 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+	gap: 0 32px;
+}
+.ships li {
+	display: grid;
+	grid-template-columns: 7.5em minmax(0, 1fr);
+	gap: 16px;
+	padding-block: 16px;
+	border-bottom: 2px solid var(--night-light);
+}
+.ships b {
+	font: italic 900 1.35rem/1.1 var(--display);
+	text-transform: uppercase;
+}
+.ships .power {
+	display: block;
+	font: 700 0.8rem/1.3 var(--body);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--amber);
+}
+.ships span:last-child { color: var(--mist); }
+
+.facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding: 0;
+	margin: 24px 0 0;
+	list-style: none;
+}
+.facts li {
+	font: 700 0.9rem/1 var(--body);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 10px 16px;
+	background: var(--ink);
+	color: var(--text);
+	border-left: 4px solid var(--amber);
+}
+
+/* --- Policy page --- */
+
+.policy { max-width: 46em; }
+.policy h2 { font-size: clamp(1.6rem, 4.5vw, 2.2rem); margin-top: 48px; color: var(--amber); }
+.policy li { margin-block: 6px; }
+.policy .updated { color: var(--dim); }
+
+@media (min-width: 820px) {
+	.game-hero { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+}
