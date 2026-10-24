@@ -222,6 +222,7 @@ section { margin-top: clamp(64px, 10vw, 112px); }
 	color: inherit;
 }
 .game-card:hover h3 { color: var(--amber); }
+.game-card + .game-card { margin-top: 24px; }
 .game-card img {
 	width: clamp(96px, 20vw, 160px);
 	border-radius: 22%;
